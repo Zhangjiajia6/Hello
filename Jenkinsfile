@@ -1,9 +1,9 @@
 pipeline {
-    agent { any }
+    agent any
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
+                python3 --version
             }
         }
     }

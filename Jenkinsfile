@@ -22,7 +22,7 @@ pipeline {
     }
     post {
         failure {
-            emailext body: 'this is a test', subject: 'Pipeline Fail test', to: 'jiajia.zhang@intel.com'
+            emailext to: 'jiajia.zhang@intel.com'
         }
     }
 }

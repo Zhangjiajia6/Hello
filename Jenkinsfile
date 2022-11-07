@@ -11,7 +11,7 @@ pipeline {
         always {
             script {
                 if(log.contains("java")){
-                    sh 'echo YES it's JAVA'
+                    sh "echo YES it's JAVA"
                 }
             }
         }

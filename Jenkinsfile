@@ -10,7 +10,7 @@ pipeline {
     post {
         always {
             script {
-                if(${BUILD_LOG}.contains("java")){
+                if(manager.logContains(".*java.*")){
                     sh "echo YES it's JAVA"
                 }
             }

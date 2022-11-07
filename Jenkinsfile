@@ -10,8 +10,10 @@ pipeline {
     post {
         always {
             script {
-                if(manager.logContains(".*OpenJDK.*")){
+                if(manager.logContains(".*JAVA.*")){
                     echo "YES it's JAVA"
+                } else {
+                    error("No logs contains java")
                 }
             }
         }

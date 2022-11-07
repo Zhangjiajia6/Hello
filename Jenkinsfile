@@ -7,7 +7,7 @@ pipeline {
             }
         }
         stage('Check Log') {
-            stepts {
+            steps {
             catchError {
                 script {
                     if(manager.logContains(".*JAVA.*")){

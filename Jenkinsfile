@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Check Log') {
             steps {
-            catchError {
+            catchError(stageResult: 'FAILURE') {
                 script {
                     if(manager.logContains(".*JAVA.*")){
                         echo "YES it's JAVA"

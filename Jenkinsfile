@@ -7,6 +7,7 @@ pipeline {
             }
         }
         stage('Check Log') {
+            stepts {
             catchError {
                 script {
                     if(manager.logContains(".*JAVA.*")){
@@ -15,6 +16,7 @@ pipeline {
                         error("No logs contains java")
                     }
                 }
+            }
             }
         }
     }

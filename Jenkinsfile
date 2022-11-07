@@ -1,4 +1,8 @@
 pipeline {
+    parameters {
+        string(name: 'NOTIFICATION_EMAIL', defaultValue: 'jiajia.zhang@intel.com', trim: true,
+               description: 'Who wants to receive the execution results ?')
+    }
     agent any
     stages {
         stage('build') {
@@ -22,7 +26,14 @@ pipeline {
     }
     post {
         failure {
-            emailext to: 'jiajia.zhang@intel.com'
+            emailext (
+                mimeType: 'text/html',
+                subject: '[Jenkins Pipeline]-> ' + currentBuild.fullDisplayName,
+                from: 'Jenkins.Pipeline.Data.Post-process',
+                to: params.NOTIFICATION_EMAIL,
+                body: '${SCRIPT, template="groovy-html.template"}',
+                attachLog: true
+            )
         }
     }
 }
